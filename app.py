@@ -17,6 +17,15 @@ def sumar():
         return jsonify({'error': 'Parámetros a y b requeridos'}), 400
     return jsonify({'resultado': a + b})
 
+@app.route('/api/multiplicar', methods=['POST']) # Endpoint para multiplicar dos números
+def multiplicar():
+    data = request.get_json()
+    a = data.get('a')
+    b = data.get('b')
+    if a is None or b is None:
+        return jsonify({'error': 'Parámetros a y b requeridos'}), 400
+    return jsonify({'resultado': a * b})
+
 @app.route('/api/info', methods=['GET']) # Endpoint para obtener información del microservicio
 def info():
     return jsonify({
